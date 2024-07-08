@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            background-color: #01414f;
+            margin: 50px 300px;
+        }
+
+        .birthdayCard {
+            position: relative;
+            width: 500px;
+            height: 700px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transform: perspective(2500px);
+            transition: 4s;
+        }
+
+        .birthdayCard:hover {
+            transform: perspective(2500px) rotate(5deg);
+            box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .15), 0 10px 100px rgba(0, 0, 0, 0.3);
+        }
+
+        .birthdayCard:hover .cardFront {
+            transform: rotateY(-160deg);
+        }
+
+        .birthdayCard:hover .front-text {
+            display: none;
+        }
+
+
+
+
+
+        .cardFront {
+            position: relative;
+            background-color: #0c112e;
+
+            width: 510px;
+            height: 700px;
+            overflow: hidden;
+            transform-origin: left;
+            box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13), 30px 0 50px rgba(0, 0, 0, 0.1);
+            transition: .4s;
+        }
+
+        .happy,
+        .toyou {
+            position: relative;
+            font-family: didot;
+            text-align: center;
+            backface-visibility: hidden;
+            font-size: 30px;
+            color: #fee799;
+        }
+
+        .happy {
+            top: 250px;
+            color: #fee799;
+            font-size: 45px;
+        }
+
+        .toyou {
+            top: 123px;
+            color: #fee799;
+        }
+
+        .bday {
+            position: relative;
+            font-family: arial;
+            font-size: 35px;
+            text-align: center;
+            top: 163px;
+            color: #fee799;
+        }
+
+        .wrap-deco {
+            position: absolute;
+            top: -230px;
+            left: -200px;
+        }
+
+        .decorations {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            border: 3px solid #333;
+            border-radius: 50%;
+        }
+
+        .decorations:before,
+        .decorations:after,
+        .decorationsTwo:before,
+        .decorationsTwo:after,
+        .decorationsThree:before,
+        .decorationsThree:after {
+            content: "";
+            position: absolute;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            width: 0;
+            height: 0;
+        }
+
+        .decorations:before {
+            border-top: 40px solid #f15bb5;
+            top: 297px;
+            left: 210px;
+            transform: rotate(-5deg);
+        }
+
+        .decorations:after {
+            border-top: 40px solid #f4d35e;
+            top: 288px;
+            left: 260px;
+            transform: rotate(-17deg);
+        }
+
+        .decorationsTwo:before {
+            border-top: 40px solid #00f5d4;
+            top: 268px;
+            left: 315px;
+            transform: rotate(-30deg);
+        }
+
+        .decorationsTwo:after,
+        .decorationsThree:after {
+            border-top: 40px solid #9b5de5;
+            top: 238px;
+            left: 355px;
+            transform: rotate(-40deg);
+        }
+
+        .wrap-decoTwo {
+            transform: scaleX(-1);
+            position: absolute;
+            top: -230px;
+            left: 445px;
+        }
+
+        .decorationsThree:before {
+            border-top: 40px solid #00bbf9;
+            top: 268px;
+            left: 315px;
+            transform: rotate(-30deg);
+        }
+
+        .plate {
+            position: absolute;
+            width: 130px;
+            height: 5px;
+            background-color: #00bbf9;
+            left: 60px;
+            top: 213px;
+        }
+
+        .cake {
+            position: absolute;
+            overflow: hidden;
+            width: 100px;
+            height: 50px;
+            background-color: #f15bb5;
+            border-radius: 10px 10px 0 0;
+            top: -50px;
+            left: 15px;
+            box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
+        }
+
+        .cake:before {
+            content: "";
+            position: absolute;
+            background-color: #432818;
+            width: 10px;
+            height: 20px;
+            top: 5px;
+            border-radius: 20px;
+            box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5, 40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
+        }
+
+        .plate:before {
+            content: "";
+            position: absolute;
+            background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
+            width: 7px;
+            height: 25px;
+            top: -75px;
+            left: 61px;
+        }
+
+        .plate:after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 5px;
+            background-color: #333;
+            top: -80px;
+            left: 64px;
+        }
+
+
+        .flame {
+            position: absolute;
+            background-color: #fb5607;
+            border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+            transform: rotate(-45deg);
+            width: 15px;
+            height: 15px;
+            opacity: 0.7;
+            top: -93px;
+            left: 57px;
+        }
+
+
+
+        .cardInside {
+            position: absolute;
+            background-color: #0c112e;
+            width: 500px;
+            height: 690px;
+            z-index: -1;
+            left: 0;
+            top: 0;
+            box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+            border: 5px solid #fff;
+        }
+
+        .inside-text {
+            position: relative;
+            top: -178px;
+            transform: scale(0.7);
+            display: flex;
+            justify-content: center;
+        }
+
+        .wishes {
+            position: relative;
+            top: -60px;
+            margin: 25px;
+            border: 1px solid #fff;
+            padding: 19px;
+        }
+
+        p {
+            font-family: "Marck Script", cursive;
+            color: #fee799;
+            font-size: 19px;
+        }
+
+        .name {
+            margin-left: 150px;
+        }
+
+        .flip-card-back {  
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="birthdayCard">
+        <div class="cardFront">
+            <div class="front-text">
+                <!-- <h3 class="happy">HAPPY</h3>
+                <h2 class="bday">BIRTHDAY</h2>
+                <h3 class="toyou">to you!</h3> -->
+                <img src="Assets/Mohit Sir birthday Card (1).jpg" style="width: 100%;">
+            </div>
+            <div class="flip-card-back">
+                <img src="Assets/Wedding Photo Collage in Ivory Purple Clean Grid Style.jpg" style="width:100%;">
+            </div>
+        </div>
+        <div class="cardInside">
+            <div class="inside-text">
+                <h3 class="happy">HAPPY BIRTHDAY MOHIT SIR</h3>
+
+
+            </div>
+            <div class="wishes">
+                <p>Dear Mohit Sir,</p>
+                <p>On your special day, we want to take a moment to express our appreciation for your exceptional
+                    leadership and guidance. Your dedication inspires us every day to strive for excellence and achieve
+                    our goals..</p>
+                <p>May your birthday be filled with joy, laughter, and wonderful moments that you cherish forever.
+                    Here's to another year of success and accomplishments under your thoughtful guidance.</p>
+                <p>Warmest regards and best wishes from the entire IT Team.</p>
+                <p class="name">From - Praveen Sir, Mukesh Sir, Mohan Sir, Atharv Sir, Manoj Sir, Nishi Mam, Utkarsh,
+                    Rahul and Anmol</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
